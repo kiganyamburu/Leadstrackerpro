@@ -215,6 +215,6 @@ If you have any questions or issues:
 
 **Made with ❤️ for productivity enthusiasts**
 
-[⭐ Star this project](https://github.com/yourusername/leads-tracker-pro) • [🐛 Report Bug](https://github.com/yourusername/leads-tracker-pro/issues) • [💡 Request Feature](https://github.com/yourusername/leads-tracker-pro/issues)
+[⭐ Star this project](https://github.com/kiganyamburu/leads-tracker-pro) • [🐛 Report Bug](https://github.com/kiganyambur/leads-tracker-pro/issues) • [💡 Request Feature](https://github.com/kiganyambur/leads-tracker-pro/issues)
 
 </div>
