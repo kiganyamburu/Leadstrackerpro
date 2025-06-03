@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leads Tracker Pro</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: #4a5568;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #5f9341, #4a7c59);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            color: #718096;
+            font-size: 1.1rem;
+        }
+
+        .input-section {
+            margin-bottom: 30px;
+        }
+
+        input {
+            width: 100%;
+            padding: 16px 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 16px;
+            outline: none;
+            transition: all 0.3s ease;
+            background: white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        input:focus {
+            border-color: #5f9341;
+            box-shadow: 0 0 0 3px rgba(95, 147, 65, 0.1);
+        }
+
+        .button-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            flex: 1;
+            min-width: 140px;
+            padding: 14px 24px;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        button:hover::before {
+            left: 100%;
+        }
+
+        #input-btn, #tab-btn {
+            background: linear-gradient(135deg, #5f9341, #4a7c59);
+            color: white;
+            box-shadow: 0 4px 15px rgba(95, 147, 65, 0.3);
+        }
+
+        #input-btn:hover, #tab-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(95, 147, 65, 0.4);
+        }
+
+        #delete-btn {
+            background: linear-gradient(135deg, #ffffff, #f7fafc);
+            color: #e53e3e;
+            border: 2px solid #e53e3e;
+            box-shadow: 0 4px 15px rgba(229, 62, 62, 0.2);
+        }
+
+        #delete-btn:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(135deg, #e53e3e, #c53030);
+            color: white;
+            box-shadow: 0 8px 25px rgba(229, 62, 62, 0.4);
+        }
+
+        .leads-section {
+            margin-top: 40px;
+        }
+
+        .leads-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            gap: 12px;
+        }
+
+        .leads-header h2 {
+            color: #4a5568;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .leads-count {
+            background: linear-gradient(135deg, #5f9341, #4a7c59);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        ul {
+            list-style: none;
+            display: grid;
+            gap: 12px;
+        }
+
+        li {
+            background: white;
+            border-radius: 12px;
+            padding: 16px 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background: linear-gradient(135deg, #5f9341, #4a7c59);
+        }
+
+        li:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        li a {
+            color: #4a5568;
+            text-decoration: none;
+            font-weight: 500;
+            display: block;
+            word-break: break-all;
+            transition: color 0.3s ease;
+        }
+
+        li a:hover {
+            color: #5f9341;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #a0aec0;
+        }
+
+        .empty-state svg {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+
+        .empty-state h3 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+            color: #718096;
+        }
+
+        .empty-state p {
+            font-size: 1rem;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        li {
+            animation: fadeInUp 0.3s ease;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                margin: 10px;
+                padding: 30px 20px;
+            }
+            
+            .button-group {
+                flex-direction: column;
+            }
+            
+            button {
+                min-width: auto;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Leads Tracker Pro</h1>
+            <p>Organize and manage your valuable leads</p>
+        </div>
+        
+        <div class="input-section">
+            <input type="text" id="input-el" placeholder="Enter URL or lead information..."/>
+            <div class="button-group">
+                <button id="input-btn">💾 Save Input</button>
+                <button id="tab-btn">🔗 Save Tab</button>
+                <button id="delete-btn">🗑️ Delete All</button>
+            </div>
+        </div>
+        
+        <div class="leads-section">
+            <div class="leads-header">
+                <h2>My Leads</h2>
+                <span class="leads-count" id="leads-count">0</span>
+            </div>
+            <ul id="ul-el">
+                <div class="empty-state">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM19 19H5V5H19V19ZM17 12H15V15H12V17H15V20H17V17H20V15H17V12Z"/>
+                    </svg>
+                    <h3>No leads yet</h3>
+                    <p>Start adding leads to build your collection</p>
+                </div>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        let myLeads = []
+        const inputEl = document.getElementById("input-el")
+        const inputBtn = document.getElementById("input-btn")
+        const ulEl = document.getElementById("ul-el")
+        const deleteBtn = document.getElementById("delete-btn")
+        const tabBtn = document.getElementById("tab-btn")
+        const leadsCountEl = document.getElementById("leads-count")
+        const leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"))
+
+        if (leadsFromLocalStorage) {
+            myLeads = leadsFromLocalStorage
+            render(myLeads)
+        }
+
+        const tabs = [
+            {url: "https://www.linkedin.com/in/per-harald-borgen/"}
+        ]
+
+        function updateLeadsCount() {
+            leadsCountEl.textContent = myLeads.length
+        }
+
+        function render(leads) {
+            let listItems = ""
+            if (leads.length === 0) {
+                ulEl.innerHTML = `
+                    <div class="empty-state">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM19 19H5V5H19V19ZM17 12H15V15H12V17H15V20H17V17H20V15H17V12Z"/>
+                        </svg>
+                        <h3>No leads yet</h3>
+                        <p>Start adding leads to build your collection</p>
+                    </div>
+                `
+            } else {
+                for (let i = 0; i < leads.length; i++) {
+                    listItems += `
+                        <li>
+                            <a target='_blank' href='${leads[i]}'>
+                                ${leads[i]}
+                            </a>
+                        </li>
+                    `
+                }
+                ulEl.innerHTML = listItems
+            }
+            updateLeadsCount()
+        }
+
+        deleteBtn.addEventListener("dblclick", function() {
+            localStorage.clear()
+            myLeads = []
+            render(myLeads)
+        })
+
+        inputBtn.addEventListener("click", function() {
+            if (inputEl.value.trim()) {
+                myLeads.push(inputEl.value.trim())
+                inputEl.value = ""
+                localStorage.setItem("myLeads", JSON.stringify(myLeads))
+                render(myLeads)
+            }
+        })
+
+        tabBtn.addEventListener("click", function() {
+            myLeads.push(tabs[0].url)
+            localStorage.setItem("myLeads", JSON.stringify(myLeads))
+            render(myLeads)
+        })
+
+        // Enter key functionality
+        inputEl.addEventListener("keypress", function(e) {
+            if (e.key === "Enter") {
+                inputBtn.click()
+            }
+        })
+
+        // Initialize
+        render(myLeads)
+    </script>
+</body>
+</html>
