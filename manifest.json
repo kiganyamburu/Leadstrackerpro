@@ -1,0 +1,19 @@
+{
+    "manifest_version": 3,
+    "version": "1.0",
+    "name": "Leads Tracker Pro",
+    "description": "A beautiful Chrome extension to save and manage your valuable leads",
+    "action": {
+        "default_popup": "index.html",
+        "default_title": "Leads Tracker Pro"
+    },
+    "permissions": [
+        "tabs",
+        "storage"
+    ],
+    "icons": {
+        "16": "icon16.png",
+        "48": "icon48.png",
+        "128": "icon128.png"
+    }
+}
