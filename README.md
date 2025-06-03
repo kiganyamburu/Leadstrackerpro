@@ -20,10 +20,10 @@ A beautiful and modern Chrome extension for saving and managing your valuable le
 ## 🖼️ Screenshots
 
 ### Main Interface
-![Main Interface](screenshot-main.png)
+![Main Interface](main.png)
 
 ### Empty State
-![Empty State](screenshot-empty.png)
+![Empty State](min.png)
 
 ## 📁 Project Structure
 
