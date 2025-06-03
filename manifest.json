@@ -5,15 +5,11 @@
     "description": "A beautiful Chrome extension to save and manage your valuable leads",
     "action": {
         "default_popup": "index.html",
-        "default_title": "Leads Tracker Pro"
+        "default_title": "Leads Tracker Pro",
+        "default_icon": "coin.png"
     },
     "permissions": [
         "tabs",
         "storage"
-    ],
-    "icons": {
-        "16": "icon16.png",
-        "48": "icon48.png",
-        "128": "icon128.png"
-    }
+    ]
 }

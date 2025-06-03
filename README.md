@@ -205,9 +205,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 If you have any questions or issues:
 
-- 📧 Email: support@leadstrackerpro.com
-- 🐛 Issues: [GitHub Issues](https://github.com/yourusername/leads-tracker-pro/issues)
-- 💬 Discussions: [GitHub Discussions](https://github.com/yourusername/leads-tracker-pro/discussions)
+- 📧 Email: mburukiganya@gmail.com
+- 🐛 Issues: [GitHub Issues](https://github.com/kiganyamburu/leads-tracker-pro/issues)
+- 💬 Discussions: [GitHub Discussions](https://github.com/kiganyamburu/leads-tracker-pro/discussions)
 
 ---
 
